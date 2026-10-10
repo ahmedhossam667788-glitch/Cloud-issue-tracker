@@ -1,0 +1,28 @@
+{
+  "name": "cloud-issue-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmedhossam667788-glitch/Cloud-issue-tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ahmedhossam667788-glitch/Cloud-issue-tracker/issues"
+  },
+  "homepage": "https://github.com/ahmedhossam667788-glitch/Cloud-issue-tracker#readme",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "scripts": {
+    "start": "http-server frontend -p 8080"
+  }
+}

@@ -1,75 +1,201 @@
 * {
-    box-sizing: border-box;
-  }
-  
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f6f8;
-    color: #1f2933;
-  }
-  
-  .app-header {
-    padding: 2rem;
-    background: #203864;
-    color: white;
-  }
-  
-  .container {
-    width: min(1100px, 92%);
-    margin: 2rem auto;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.5rem;
-  }
-  
-  .panel {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 10px;
-  }
-  
-  form {
-    display: grid;
-    gap: 0.75rem;
-  }
-  
-  input,
-  textarea,
-  select,
-  button {
-    width: 100%;
-    padding: 0.75rem;
-    font: inherit;
-  }
-  
-  textarea {
-    min-height: 120px;
-    resize: vertical;
-  }
-  
-  button {
-    border: none;
-    border-radius: 6px;
-    background: #203864;
-    color: rgb(255, 13, 13);
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background: #162a4a;
-  }
-  
-  .issue-card {
-    border: 1px solid #d9e2ec;
-    border-radius: 8px;
-    padding: 1rem;
-    background: #fff;
-  }
-  
-  @media (max-width: 760px) {
-    .container {
-      grid-template-columns: 1fr;
-    }
-  }
-  
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: Arial, sans-serif;
+	background: #f4f6f8;
+	color: #1f2933;
+}
+
+.app-header {
+	padding: 2rem;
+	background: #203864;
+	color: white;
+}
+
+.app-header h1 {
+	margin: 0 0 0.5rem;
+}
+
+.app-header p {
+	margin: 0;
+}
+
+.container {
+	width: min(1100px, 92%);
+	margin: 2rem auto;
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1.5rem;
+}
+
+.panel {
+	min-width: 0;
+	padding: 1.5rem;
+	border-radius: 8px;
+	background: white;
+}
+
+form {
+	display: grid;
+	gap: 0.75rem;
+}
+
+input,
+textarea,
+select,
+button {
+	width: 100%;
+	padding: 0.75rem;
+	font: inherit;
+}
+
+textarea {
+	min-height: 120px;
+	resize: vertical;
+}
+
+button {
+	border: 0;
+	border-radius: 4px;
+	color: white;
+	background: #203864;
+	cursor: pointer;
+}
+
+button:hover {
+	background: #162a4a;
+}
+
+.issue-summary {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0 1rem;
+}
+
+.issue-summary p {
+	margin: 0 0 1rem;
+}
+
+.filters {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	align-items: end;
+	gap: 0.5rem;
+	margin-bottom: 1rem;
+}
+
+.search-label {
+	grid-column: 1 / -1;
+}
+
+.filters input,
+.filters select {
+	display: block;
+	margin-top: 0.35rem;
+}
+
+.visible-count {
+	color: #52606d;
+	font-size: 0.9rem;
+}
+
+.issues-list {
+	display: grid;
+	gap: 0.75rem;
+}
+
+.issue-card {
+	min-width: 0;
+	padding: 1rem;
+	border: 1px solid #d9e2ec;
+	border-radius: 6px;
+	background: white;
+}
+
+.issue-card-top,
+.issue-card-footer,
+.issue-metadata,
+.issue-actions {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75rem;
+}
+
+.issue-card h3 {
+	overflow-wrap: anywhere;
+}
+
+.issue-description {
+	overflow-wrap: anywhere;
+	white-space: pre-wrap;
+}
+
+.issue-id,
+.issue-metadata time {
+	color: #52606d;
+	font-size: 0.85rem;
+}
+
+.status-badge,
+.priority-label {
+	font-size: 0.85rem;
+}
+
+.issue-actions button {
+	width: auto;
+}
+
+.delete-button {
+	background: #7a2e2e;
+}
+
+.delete-button:hover {
+	background: #5d2222;
+}
+
+.empty-state {
+	padding: 1rem;
+	border: 1px dashed #aab4bf;
+	color: #52606d;
+	text-align: center;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+	outline: 3px solid #e49a70;
+	outline-offset: 2px;
+}
+
+@media (max-width: 760px) {
+	.container {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 420px) {
+	.app-header {
+		padding: 1.5rem;
+	}
+
+	.container {
+		width: 94%;
+		margin: 1rem auto;
+		gap: 1rem;
+	}
+
+	.panel {
+		padding: 1rem;
+	}
+
+	.issue-card-footer,
+	.issue-metadata {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+}

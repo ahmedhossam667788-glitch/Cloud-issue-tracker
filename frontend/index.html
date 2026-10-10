@@ -1,60 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloud Issue Tracker</title>
-    <link rel="stylesheet" href="css/style.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cloud Issue Tracker</title>
+	<link rel="icon" href="favicon.svg" type="image/svg+xml">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/app.js?v=2" defer></script>
 </head>
-
 <body>
+	<header class="app-header">
+		<h1>Cloud Issue Tracker</h1>
+		<p>Report and track simple technical issues.</p>
+	</header>
 
-<header class="app-header">
-    <h1>Cloud Issue Tracker</h1>
-    <p>Report and track simple technical issues.</p>
-</header>
+	<main class="container">
+		<section class="panel" aria-labelledby="create-title">
+			<h2 id="create-title">Create Issue</h2>
+			<form id="issue-form">
+				<label for="title">Title</label>
+				<input id="title" name="title" type="text" maxlength="100" required>
 
-<main class="container">
+				<label for="description">Description</label>
+				<textarea id="description" name="description" maxlength="1000" required></textarea>
 
-    <section class="panel">
-        <h2>Create Issue</h2>
+				<label for="priority">Priority</label>
+				<select id="priority" name="priority" required>
+					<option value="Low">Low</option>
+					<option value="Medium" selected>Medium</option>
+					<option value="High">High</option>
+				</select>
 
-        <form id="issue-form">
+				<button type="submit">Submit Issue</button>
+				<p id="form-message" aria-live="polite"></p>
+			</form>
+		</section>
 
-            <label for="title">Title</label>
-            <input id="title" name="title" type="text" required>
+		<section class="panel" aria-labelledby="issues-title">
+			<h2 id="issues-title">Current Issues</h2>
+			<div class="issue-summary">
+				<p><strong>Total:</strong> <span id="total-count">0</span></p>
+				<p><strong>Open:</strong> <span id="open-count">0</span></p>
+				<p><strong>Resolved:</strong> <span id="resolved-count">0</span></p>
+			</div>
 
-            <label for="description">Description</label>
-            <textarea id="description" name="description" required></textarea>
+			<div class="filters">
+				<label class="search-label" for="search-issues">
+					Search issues
+					<input id="search-issues" type="search" placeholder="Search by title or description">
+				</label>
+				<label for="status-filter">Status</label>
+				<select id="status-filter">
+					<option value="All">All statuses</option>
+					<option value="Open">Open</option>
+					<option value="Resolved">Resolved</option>
+				</select>
+				<label for="priority-filter">Priority</label>
+				<select id="priority-filter">
+					<option value="All">All priorities</option>
+					<option value="High">High</option>
+					<option value="Medium">Medium</option>
+					<option value="Low">Low</option>
+				</select>
+			</div>
 
-            <label for="priority">Priority</label>
-            <select id="priority" name="priority" required>
-                <option>Low</option>
-                <option selected>Medium</option>
-                <option>High</option>
-            </select>
-
-            <button type="submit">Submit Issue</button>
-
-        </form>
-
-        <p id="form-message" aria-live="polite"></p>
-    </section>
-
-    <section class="panel">
-        <h2>Current Issues</h2>
-
-        <p>
-            <strong>Total issues:</strong>
-            <span id="issue-count">0</span>
-        </p>
-
-        <div id="issues-list"></div>
-    </section>
-
-</main>
-
-<script src="js/app.js" defer></script>
-
+			<p id="visible-count" class="visible-count" aria-live="polite"></p>
+			<div id="issues-list" class="issues-list" aria-live="polite"></div>
+		</section>
+	</main>
 </body>
 </html>
